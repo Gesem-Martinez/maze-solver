@@ -6,7 +6,7 @@ class Window:
         self.__root = Tk()
         self.__root.title("Maze Solver")
         self.__canvas = Canvas(self.__root, width=width,
-                               height=height, background='gray75')
+                               height=height, background='white')
         self.__canvas.pack(expand=1, fill=BOTH)
         self.__isWindowRunning = False
         self.__root.protocol("WM_DELETE_WINDOW", self.close)
@@ -56,7 +56,7 @@ class Cell:
         self.has_left_wall = left_wall
         self.has_top_wall = top_wall
         self.has_right_wall = right_wall
-        self.has_bottom_wal = bottom_wall
+        self.has_bottom_wall = bottom_wall
         self.__x1 = None
         self.__x2 = None
         self.__y1 = None
@@ -71,12 +71,23 @@ class Cell:
 
         if self.has_left_wall:
             self.__win.draw_line(Line(Point(x1, y1), Point(x1, y2)))
+        else:
+            self.__win.draw_line(Line(Point(x1, y1), Point(x1, y2)), "white")
+
         if self.has_top_wall:
             self.__win.draw_line(Line(Point(x1, y1), Point(x2, y1)))
+        else:
+            self.__win.draw_line(Line(Point(x1, y1), Point(x2, y1)), "white")
+
         if self.has_right_wall:
             self.__win.draw_line(Line(Point(x2, y1), Point(x2, y2)))
-        if self.has_bottom_wal:
+        else:
+            self.__win.draw_line(Line(Point(x2, y1), Point(x2, y2)), "white")
+
+        if self.has_bottom_wall:
             self.__win.draw_line(Line(Point(x1, y2), Point(x2, y2)))
+        else:
+            self.__win.draw_line(Line(Point(x1, y2), Point(x2, y2)), "white")
 
     def draw_move(self, to_cell, undo=False):
         own_middle_x = abs((self.__x2 - self.__x1) / 2) + self.__x1
