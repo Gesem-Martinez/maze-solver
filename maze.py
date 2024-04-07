@@ -24,9 +24,10 @@ class Maze:
 
             self._cells.append(row)
 
-        for i in range(self._num_rows):
-            for j in range(self._num_cols):
-                self._draw_cells(i, j)
+        if self._win is not None:
+            for i in range(self._num_rows):
+                for j in range(self._num_cols):
+                    self._draw_cells(i, j)
 
     def _draw_cells(self, i, j):
         cell_x1 = (j * self._cell_size_x) + self._x1
