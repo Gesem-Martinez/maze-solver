@@ -52,7 +52,7 @@ class Line:
 
 
 class Cell:
-    def __init__(self, left_wall, top_wall, right_wall, bottom_wall, win):
+    def __init__(self, win=None, left_wall=True, top_wall=True, right_wall=True, bottom_wall=True):
         self.has_left_wall = left_wall
         self.has_top_wall = top_wall
         self.has_right_wall = right_wall
@@ -84,8 +84,10 @@ class Cell:
 
         own_middle = Point(own_middle_x, own_middle_y)
 
-        other_middle_x = abs(((to_cell.__x2 - to_cell.__x1) / 2) + to_cell.__x1)
-        other_middle_y = abs(((to_cell.__y2 - to_cell.__y1) / 2) + to_cell.__y1)
+        other_middle_x = abs(
+            ((to_cell.__x2 - to_cell.__x1) / 2) + to_cell.__x1)
+        other_middle_y = abs(
+            ((to_cell.__y2 - to_cell.__y1) / 2) + to_cell.__y1)
 
         other_middle = Point(other_middle_x, other_middle_y)
 
